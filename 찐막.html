@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+<head>
+  <title>WEB - CSS</title>
+  <meta charset="utf-8">
+
+  <style>
+  body{margin:0;}
+  .saw{color:gray;}
+  a{color:black; text-decoration:none;}
+  h1{font-size:30px; text-align: center; border-bottom:1px solid gray; margin:0; padding:20px; background-color:#707179; }
+  ol{border-right:1px solid gray; width:180px; margin:0; padding:20px; background:#3D5AB6;}
+   {background:#66bb6a;}
+  #grid{ display:grid; grid-template-columns:150px 1fr;}
+  #grid ol{padding-left:33px;}
+  #grid #article{padding-left:100px;}
+
+
+
+
+  </style>
+</head>
+<body>
+  <h1 ><a href="찐막.html"><font color="white">김석한의 Routine Of Workout</font></a></h1>
+  <div id="grid">
+    <ol><font color="white">
+      <li><ins><a href="1.찐막.html"><font color="white">Flat Bench Press</font> </a></ins></li><br>
+      <li><ins><a href="2.찐막.html"><font color="white">Flat Dumbbell Press</font></a></ins></li><br>
+      <li><ins><a href="3.찐막.html"><font color="white">Machine Chest Press</font></a></ins></li><br>
+      <li><ins><a href="4.찐막.html"><font color="white">Pec Deck Fly Machine</font></a></ins></li><br>
+      <li><ins><a href="5.찐막.html"><font color="white">Dips </font></a></ins></li><br>
+      <li><ins><a href="6.찐막.html"><font color="white">Push-Up</font></a></ins></li><br>
+</font>
+    </ol>
+    <div id="article">
+        <h2><ins>흉근</ins>(Pectoralis)  </h2>
+        <h4>1) 대흉근 (Musculus pectoralis major)</h4>
+        <b><img src="대흉근.jpg" width="300px" height="250px" align="left">
+          <li> 흉부 앞면을 덮고 있는 편평하고 매우 강대한 근육이다.</li>
+          <li> 쇄골 앞과 안쪽에서 일어나는 쇄골기시점, 흉골과 늑연골 1-6번에서 일어나는 늑골 <br> &nbsp;&nbsp;&nbsp; 쇄골 기시점을 갖는다.</li>
+          <li> 대흉근의 반대쪽에 위치한 견갑골 주변의 근육을 운동해 줌으로써 균형있고 안정감<br> &nbsp;&nbsp;&nbsp;&nbsp;있는 어깨를 만들 수 있다.</li>
+          <li>사진에서 보는바와 같이 대흉근은 위, 중간, 아래 세부위로 나뉘어 있음을 알 수 있<br> &nbsp;&nbsp;&nbsp;&nbsp;다. 따라서 제대로 발달시키기 위해선 각 부위별로 고립훈련을 할 필요가 있다.</li></b><br clear="left">
+          <h4>2) 소흉근 (Musculus pectoralis minor)</h4>
+        <b><img src="배경사진.jfif" width="300px" height="250px" align="left">
+          <li>소흉근은 대흉근 내부쪽 3~5번 갈비뼈의 늑연골 근처에서 시작하여 견갑골의<br> &nbsp;&nbsp;&nbsp;&nbsp;오구돌기 내측 상면에 정지하는 근육으로, 견갑골의 안정화(stability)을 담당한다.   </li>
+          <li>가슴 하단과 전거근 사이에서 대흉근에 힘을 주면 살짝 밀려 나오는 근육이다.</li>
+          <li>소흉근의 발달을 위해 별도의 단련을 할 필요는 없을 것이라 생각한다. 대흉근 단련<br> &nbsp;&nbsp;&nbsp;&nbsp;시 자연스럽게 소흉근도 발달할 것이다.</li></b><br clear="left">
+
+      </div>
+  </div>
+  <div style="visibility: hidden; position: absolute;" id="webcam-container"></div>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
+<script type="text/javascript">
+    // More API functions here:
+    // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
+
+    // the link to your model provided by Teachable Machine export panel
+    const URL = "https://teachablemachine.withgoogle.com/models/r8X8UCIeo/";
+
+    let model, webcam, maxPredictions;
+
+    // Load the image model and setup the webcam
+    async function init() {
+        const modelURL = URL + "model.json";
+        const metadataURL = URL + "metadata.json";
+
+        // load the model and metadata
+        // Refer to tmImage.loadFromFiles() in the API to support files from a file picker
+        // or files from your local hard drive
+        // Note: the pose library adds "tmImage" object to your window (window.tmImage)
+        model = await tmImage.load(modelURL, metadataURL);
+        maxPredictions = model.getTotalClasses();
+
+        // Convenience function to setup a webcam
+        const flip = true; // whether to flip the webcam
+        webcam = new tmImage.Webcam(200, 200, flip); // width, height, flip
+        await webcam.setup(); // request access to the webcam
+        await webcam.play();
+        window.requestAnimationFrame(loop);
+
+        // append elements to the DOM
+        document.getElementById("webcam-container").appendChild(webcam.canvas);
+    }
+
+    async function loop() {
+        webcam.update(); // update the webcam frame
+        await predict();
+        window.requestAnimationFrame(loop);
+    }
+
+    // run the webcam image through the image model
+    async function predict() {
+        // predict can take in an image, video or canvas html element
+        const prediction = await model.predict(webcam.canvas);
+        if (prediction[0].probability > 0.5) {
+            document.querySelector('body').style.backgroundColor = 'white'
+            document.querySelector('body').style.color = 'black'
+        }
+        else {
+            document.querySelector('body').style.backgroundColor = 'black'
+            document.querySelector('body').style.color = 'white'
+        }
+    }
+    init()
+</script>
+  </body>
+  </html>
