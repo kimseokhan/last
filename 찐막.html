@@ -9,11 +9,50 @@
   .saw{color:gray;}
   a{color:black; text-decoration:none;}
   h1{font-size:30px; text-align: center; border-bottom:1px solid gray; margin:0; padding:20px; background-color:#707179; }
-  ol{border-right:1px solid gray; width:180px; margin:0; padding:20px; background:#3D5AB6;}
+  ol{border-right:1px solid gray; width:0px; margin:0; padding:20px; background:#3D5AB6;}
    {background:#66bb6a;}
   #grid{ display:grid; grid-template-columns:150px 1fr;}
   #grid ol{padding-left:33px;}
   #grid #article{padding-left:100px;}
+  /* Style the sidebar - fixed full height */
+.sidebar {
+  height: 100%;
+  width: 180px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #707179;
+  overflow-x: hidden;
+  padding-top: 40px;
+}
+
+/* Style sidebar links */
+.sidebar a {
+  padding: 8px 5px 10px 10px;
+  text-decoration: none;
+  font-size: 15px;
+  color: #FFFFFF;
+  display: block;
+}
+
+/* Style links on mouse-over */
+.sidebar a:hover {
+  color: #000000;
+}
+
+/* Style the main content */
+.main {
+  margin-left: 100px; /* Same as the width of the sidenav */
+  padding: 0px 10px;
+}
+
+/* Add media queries for small screens (when the height of the screen is less than 450px, add a smaller padding and font-size) */
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+}
+
 
 
 
@@ -23,25 +62,34 @@
 <body>
   <h1 ><a href="찐막.html"><font color="white">김석한의 Routine Of Workout</font></a></h1>
   <div id="grid">
+
     <ol><font color="white">
-      <li><ins><a href="1.찐막.html"><font color="white">Flat Bench Press</font> </a></ins></li><br>
-      <li><ins><a href="2.찐막.html"><font color="white">Flat Dumbbell Press</font></a></ins></li><br>
-      <li><ins><a href="3.찐막.html"><font color="white">Machine Chest Press</font></a></ins></li><br>
-      <li><ins><a href="4.찐막.html"><font color="white">Pec Deck Fly Machine</font></a></ins></li><br>
-      <li><ins><a href="5.찐막.html"><font color="white">Dips </font></a></ins></li><br>
-      <li><ins><a href="6.찐막.html"><font color="white">Push-Up</font></a></ins></li><br>
+
+<!-- The sidebar -->
+<div class="sidebar">
+<a href="#home"><i class="fa fa-fw fa-home"><li><ins><a href="찐막.html">0. <ins>Home</ins> </a>
+  <a href="#home"><i class="fa fa-fw fa-home"><li><ins><a href="1.찐막.html">1. <ins>Flat Bench Press</ins> </a>
+  <a href="#services"><i class="fa fa-fw fa-wrench"></i><li><ins><a href="2.찐막.html">2. <ins>Flat Dumbbell Press</ins></a>
+  <a href="#clients"><i class="fa fa-fw fa-user"></i><li><ins><a href="3.찐막.html">3. <ins>Machine Chest Press</ins></a>
+  <a href="#contact"><i class="fa fa-fw fa-envelope"></i><li><ins><a href="4.찐막.html">4. <ins>Pec Deck Fly</ins></a>
+      <a href="#contact"><i class="fa fa-fw fa-envelope"></i><li><ins><a href="5.찐막.html">5. <ins> Dips</ins></a>
+          <a href="#contact"><i class="fa fa-fw fa-envelope"></i><li><ins><a href="6.찐막.html">6.<ins> Push-Up</ins></a>
+
+</div>
+</s_sidebar_element>
 </font>
     </ol>
+
     <div id="article">
         <h2><ins>흉근</ins>(Pectoralis)  </h2>
         <h4>1) 대흉근 (Musculus pectoralis major)</h4>
-        <b><img src="대흉근.jpg" width="300px" height="250px" align="left">
+        <b><img src="대흉근.jpg" width="350px" height="300px">
           <li> 흉부 앞면을 덮고 있는 편평하고 매우 강대한 근육이다.</li>
           <li> 쇄골 앞과 안쪽에서 일어나는 쇄골기시점, 흉골과 늑연골 1-6번에서 일어나는 늑골 <br> &nbsp;&nbsp;&nbsp; 쇄골 기시점을 갖는다.</li>
           <li> 대흉근의 반대쪽에 위치한 견갑골 주변의 근육을 운동해 줌으로써 균형있고 안정감<br> &nbsp;&nbsp;&nbsp;&nbsp;있는 어깨를 만들 수 있다.</li>
           <li>사진에서 보는바와 같이 대흉근은 위, 중간, 아래 세부위로 나뉘어 있음을 알 수 있<br> &nbsp;&nbsp;&nbsp;&nbsp;다. 따라서 제대로 발달시키기 위해선 각 부위별로 고립훈련을 할 필요가 있다.</li></b><br clear="left">
           <h4>2) 소흉근 (Musculus pectoralis minor)</h4>
-        <b><img src="배경사진.jfif" width="300px" height="250px" align="left">
+        <b><img src="배경사진.jfif" width="350px" height="300px" >
           <li>소흉근은 대흉근 내부쪽 3~5번 갈비뼈의 늑연골 근처에서 시작하여 견갑골의<br> &nbsp;&nbsp;&nbsp;&nbsp;오구돌기 내측 상면에 정지하는 근육으로, 견갑골의 안정화(stability)을 담당한다.   </li>
           <li>가슴 하단과 전거근 사이에서 대흉근에 힘을 주면 살짝 밀려 나오는 근육이다.</li>
           <li>소흉근의 발달을 위해 별도의 단련을 할 필요는 없을 것이라 생각한다. 대흉근 단련<br> &nbsp;&nbsp;&nbsp;&nbsp;시 자연스럽게 소흉근도 발달할 것이다.</li></b><br clear="left">
